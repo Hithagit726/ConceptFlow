@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #050810;
+  color: #e2e8f0;
+  font-family: 'Syne', sans-serif;
+}
+
+.react-flow__background { background: #050810 !important; }
