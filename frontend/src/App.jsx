@@ -40,7 +40,7 @@ export default function App() {
         <div className="flex items-center gap-2">
           <GitBranch className="text-indigo-400" size={20} />
           <span className="font-bold text-white tracking-tight" style={{ fontFamily: "Syne, sans-serif" }}>
-            Rabbit Hole Mapper
+            ConceptFlow
           </span>
         </div>
 
