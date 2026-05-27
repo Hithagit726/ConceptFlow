@@ -1,4 +1,5 @@
-const BASE_URL = "http://localhost:8000/api";
+
+const BASE_URL = "https://conceptflow-production.up.railway.app/api";
 
 export async function generateRoadmap(topic) {
   const res = await fetch(`${BASE_URL}/generate-roadmap`, {
