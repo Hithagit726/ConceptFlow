@@ -1,14 +1,11 @@
-
-
 FROM python:3.11-slim
 
-# Force rebuild v2
 WORKDIR /app
 
-COPY requirements.txt .
+# Force rebuild v3
+COPY . .
+
 RUN pip install -r requirements.txt
 RUN pip install google-genai
-
-COPY . .
 
 CMD ["python", "start.py"]
