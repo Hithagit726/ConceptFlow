@@ -5,7 +5,9 @@ from google import genai
 
 load_dotenv()
 
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+
+def get_client():
+    return genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 PROMPT_TEMPLATE = """You are an expert educational curriculum designer.
 Generate a complete learning roadmap for: {topic}
@@ -43,7 +45,7 @@ Rules:
 async def generate_roadmap(topic: str) -> dict:
     prompt = PROMPT_TEMPLATE.format(topic=topic)
     
-    response = client.models.generate_content(
+    response = get_client().models.generate_content(
         model="gemini-2.5-flash-lite",
         contents=prompt
     )
@@ -64,5 +66,5 @@ async def generate_roadmap(topic: str) -> dict:
     
     return json.loads(raw)
 def list_models():
-    for model in client.models.list():
+    for model in get_client().models.list():
         print(model.name)

@@ -11,7 +11,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+def get_client():
+    return genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 router = APIRouter()
 
@@ -50,7 +51,7 @@ Give clear, concise, friendly answers. Use examples where helpful. Keep response
 
     prompt = f"{system}\n\nConversation:\n{history}\n\nAssistant:"
 
-    response = client.models.generate_content(
+    response = get_client().models.generate_content(
         model="gemini-2.5-flash-lite",
         contents=prompt
     )
