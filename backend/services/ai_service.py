@@ -1,20 +1,6 @@
 import os
 import json
-from dotenv import load_dotenv
 from google import genai
-
-load_dotenv()
-
-
-def get_client():
-    key = os.environ.get("GEMINI_API_KEY") or os.getenv("GEMINI_API_KEY")
-    print(f"API KEY FOUND: {bool(key)}")
-    if not key:
-        raise ValueError("GEMINI_API_KEY environment variable not set")
-    return genai.Client(api_key=key)
-
-
-
 
 PROMPT_TEMPLATE = """You are an expert educational curriculum designer.
 Generate a complete learning roadmap for: {topic}
@@ -49,29 +35,28 @@ Rules:
 - No circular edges
 - Return ONLY the JSON object, nothing else"""
 
-async def generate_roadmap(topic: str) -> dict:
+def generate_roadmap_sync(topic: str) -> dict:
+    key = os.environ.get("GEMINI_API_KEY")
+    client = genai.Client(api_key=key)
     prompt = PROMPT_TEMPLATE.format(topic=topic)
-    
-    response = get_client().models.generate_content(
+    response = client.models.generate_content(
         model="gemini-2.5-flash-lite",
         contents=prompt
     )
-    
     raw = response.text.strip()
-    print("RAW RESPONSE:", raw[:300])
-    
+    print("RAW RESPONSE:", raw[:300], flush=True)
     if "```" in raw:
         raw = raw.split("```")[1]
         if raw.startswith("json"):
             raw = raw[4:]
         raw = raw.strip()
-    
     start = raw.find("{")
     end = raw.rfind("}") + 1
     if start != -1 and end > start:
         raw = raw[start:end]
-    
     return json.loads(raw)
-def list_models():
-    for model in get_client().models.list():
-        print(model.name)
+
+async def generate_roadmap(topic: str) -> dict:
+    import asyncio
+    loop = asyncio.get_event_loop()
+    return await loop.run_in_executor(None, generate_roadmap_sync, topic)
