@@ -2,7 +2,9 @@ from fastapi import APIRouter, HTTPException
 from models.schemas import RoadmapRequest
 from services.ai_service import generate_roadmap
 import traceback
-
+import os
+print("GEMINI KEY EXISTS:", bool(os.getenv("GEMINI_API_KEY")))
+print("GEMINI KEY VALUE:", os.getenv("GEMINI_API_KEY")[:5] if os.getenv("GEMINI_API_KEY") else "NONE")
 router = APIRouter()
 
 @router.post("/generate-roadmap")
