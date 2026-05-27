@@ -7,7 +7,14 @@ load_dotenv()
 
 
 def get_client():
-    return genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+    key = os.environ.get("GEMINI_API_KEY") or os.getenv("GEMINI_API_KEY")
+    print(f"API KEY FOUND: {bool(key)}")
+    if not key:
+        raise ValueError("GEMINI_API_KEY environment variable not set")
+    return genai.Client(api_key=key)
+
+
+
 
 PROMPT_TEMPLATE = """You are an expert educational curriculum designer.
 Generate a complete learning roadmap for: {topic}
