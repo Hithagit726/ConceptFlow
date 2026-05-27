@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Search, Loader2, GitBranch, Bot } from "lucide-react";
+import { SignInButton, SignUpButton, UserButton, useUser } from "@clerk/clerk-react";
 import { generateRoadmap } from "./services/api";
 import Graph from "./components/Graph";
 import NodePanel from "./components/NodePanel";
@@ -14,6 +15,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [chatOpen, setChatOpen] = useState(false);
+  const { isSignedIn } = useUser();
 
   async function handleGenerate(t) {
     const query = t || topic;
@@ -72,6 +74,26 @@ export default function App() {
               <Bot size={14} />
               AI Chat
             </button>
+          )}
+        </div>
+
+        {/* Auth buttons */}
+        <div className="flex items-center gap-2">
+          {!isSignedIn ? (
+            <>
+              <SignInButton mode="modal">
+                <button className="px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-sm rounded-lg transition-colors">
+                  Sign In
+                </button>
+              </SignInButton>
+              <SignUpButton mode="modal">
+                <button className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm rounded-lg transition-colors">
+                  Sign Up
+                </button>
+              </SignUpButton>
+            </>
+          ) : (
+            <UserButton afterSignOutUrl="/" />
           )}
         </div>
       </header>
