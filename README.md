@@ -26,13 +26,6 @@ An AI-powered visual learning roadmap generator that helps you explore any topic
 <img width="1917" height="905" alt="Screenshot 2026-05-30 123127" src="https://github.com/user-attachments/assets/89ee2df9-cf64-42f6-8476-18716b6efb8f" />
 
 
-
-
-
-
-<img width="1911" height="890" alt="Screenshot 2026-05-30 124634" src="https://github.com/user-attachments/assets/a8e5b45d-6691-4177-acd1-01eeea454777" />
-
-
 ## ✨ Features
 
 - 🗺️ **Interactive Knowledge Graph** — zoom, pan, drag nodes freely
