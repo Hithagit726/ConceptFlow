@@ -20,3 +20,12 @@ export async function fetchResources(concept) {
   if (!res.ok) throw new Error("Failed to fetch resources");
   return res.json();
 }
+export async function sendChatMessage(topic, node, messages) {
+  const res = await fetch(`${BASE_URL}/chat`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ topic, node, messages }),
+  });
+  if (!res.ok) throw new Error("Failed to send message");
+  return res.json();
+}

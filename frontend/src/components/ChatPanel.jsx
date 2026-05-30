@@ -1,3 +1,5 @@
+import { sendChatMessage } from "../services/api";
+
 import { useState, useRef, useEffect } from "react";
 import { Send, Loader2, X, Bot } from "lucide-react";
 
@@ -28,7 +30,7 @@ export default function ChatPanel({ topic, selectedNode, onClose }) {
     ]);
   }, [selectedNode?.id]);
 
-  async function handleSend() {
+async function handleSend() {
     if (!input.trim() || loading) return;
 
     const userMsg = { role: "user", content: input };
@@ -37,20 +39,11 @@ export default function ChatPanel({ topic, selectedNode, onClose }) {
     setLoading(true);
 
     try {
-   const res = await fetch("https://conceptflow-production.up.railway.app/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          topic,
-          node: selectedNode?.data?.title || null,
-          messages: [...messages, userMsg].map(m => ({
-            role: m.role,
-            content: m.content
-          }))
-        })
-      });
-
-      const data = await res.json();
+      const data = await sendChatMessage(
+        topic,
+        selectedNode?.data?.title || null,
+        [...messages, userMsg].map(m => ({ role: m.role, content: m.content }))
+      );
       setMessages(prev => [...prev, { role: "assistant", content: data.reply }]);
     } catch {
       setMessages(prev => [...prev, {
