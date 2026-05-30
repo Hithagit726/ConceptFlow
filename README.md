@@ -54,6 +54,10 @@ An AI-powered visual learning roadmap generator that helps you explore any topic
 - Frontend → Vercel
 - Backend → Railway
 
+## 🏗️ Architecture
+
+<img width="1440" height="1040" alt="image" src="https://github.com/user-attachments/assets/aafa8020-0ff5-4244-aba5-acfb24c4fea7" />
+
 ## 📁 Project Structure
 conceptflow/
 ├── backend/
