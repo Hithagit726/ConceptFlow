@@ -7,6 +7,32 @@ An AI-powered visual learning roadmap generator that helps you explore any topic
 ## 🌐 Live Demo
 [conceptflow.vercel.app](https://concept-flow-34bs27lof-hitha-s-projects2.vercel.app/)
 
+## 📸 Screenshots
+
+### Home Screen
+<img width="1919" height="890" alt="Screenshot 2026-05-30 120934" src="https://github.com/user-attachments/assets/db77e50d-e4ca-44de-a327-63d6b8791bde" />
+
+
+### Roadmap Graph
+<img width="1914" height="904" alt="Screenshot 2026-05-30 120917" src="https://github.com/user-attachments/assets/a3d06d5c-2456-4296-83f6-5ab4a03a27c8" />
+
+
+### Node Details Panel and Progress Tracking
+<img width="1911" height="890" alt="Screenshot 2026-05-30 124634" src="https://github.com/user-attachments/assets/1548dc89-5e19-4374-906b-a3cbe2b2065b" />
+<img width="503" height="865" alt="Screenshot 2026-05-30 124651" src="https://github.com/user-attachments/assets/eb4a7c44-d7c0-4b63-8ee5-787382c3ac7c" />
+
+
+### AI Chat
+<img width="1917" height="905" alt="Screenshot 2026-05-30 123127" src="https://github.com/user-attachments/assets/89ee2df9-cf64-42f6-8476-18716b6efb8f" />
+
+
+
+
+
+
+<img width="1911" height="890" alt="Screenshot 2026-05-30 124634" src="https://github.com/user-attachments/assets/a8e5b45d-6691-4177-acd1-01eeea454777" />
+
+
 ## ✨ Features
 
 - 🗺️ **Interactive Knowledge Graph** — zoom, pan, drag nodes freely
